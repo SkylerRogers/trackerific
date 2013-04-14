@@ -111,8 +111,8 @@ module Trackerific
     def date_of_event(event)
       # get the date out of
       # Mon DD HH:MM am/pm THE DESCRIPTION CITY STATE ZIP.
-      d = event.split(" ")
-      DateTime.parse(d[0..3].join(" "))
+      d = event.split(",")
+      DateTime.parse(d[1..3].join(" "))
     end
     
     # Parses a USPS tracking event, and returns its description
