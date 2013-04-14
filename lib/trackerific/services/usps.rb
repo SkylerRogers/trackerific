@@ -60,7 +60,7 @@ module Trackerific
       tracking_info['TrackDetail'].each do |d|
         events << Trackerific::Event.new(
           :date         => date_of_event(d),
-          :description  => description_of_event(d).capitalize,
+          :description  => description_of_event(d),
           :location     => location_of_event(d)
         )
       end unless tracking_info['TrackDetail'].nil?
@@ -122,8 +122,8 @@ module Trackerific
     def description_of_event(event)
       # get the description out of
       # Mon DD HH:MM am/pm THE DESCRIPTION CITY STATE ZIP.
-      d = event.split(" ")
-      d[4..d.length-4].join(" ").capitalize
+      d = event.split(",")
+      d[0]
     end
     
     # Parses a USPS tracking event, and returns its location
